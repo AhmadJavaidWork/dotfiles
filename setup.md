@@ -39,7 +39,7 @@ git clone https://github.com/AhmadJavaidWork/dotfiles.git
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 mkdir ~/.config/nvim
-ln -s ~/dotfiles/* /.config/nvim
+ln -s ~/dotfiles/nvim/* /.config/nvim
 curl -LO https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-cli-linux-x64.zip
 unzip tree-sitter-cli-linux-x64.zip -d tree-sitter
 sudo mv tree-sitter/tree-sitter /usr/local/bin
