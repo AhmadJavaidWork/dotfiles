@@ -1,0 +1,11 @@
+theme = Catppuccin Mocha
+font-family = "JetBrainsMono Nerd Font Regular"
+font-size=10
+window-decoration=none
+# Unbind the default Ghostty shortcuts to pass them to Neovim
+keybind = ctrl+shift+n=unbind
+keybind = ctrl+shift+p=unbind
+
+# Ensure Ctrl+Tab also passes through cleanly
+keybind = ctrl+tab=unbind
+keybind = ctrl+shift+tab=unbind
