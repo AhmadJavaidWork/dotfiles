@@ -12,6 +12,7 @@ return {
 				"html",
 				"cssls",
 				"pyright",
+				"clangd",
 			},
 		},
 		dependencies = {
