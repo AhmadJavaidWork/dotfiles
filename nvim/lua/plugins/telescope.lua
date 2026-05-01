@@ -49,5 +49,12 @@ return {
 				},
 			})
 		end, { desc = "All files" })
+
+		vim.keymap.set(
+			"n",
+			"<leader>ds",
+			builtin.lsp_document_symbols,
+			{ desc = "Search document symbole in current buffer" }
+		)
 	end,
 }
