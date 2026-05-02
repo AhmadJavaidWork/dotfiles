@@ -189,7 +189,13 @@ sudo dpkg -i cuda-repo-ubuntu2404-13-2-local_13.2.1-595.58.03-1_amd64.deb
 sudo cp /var/cuda-repo-ubuntu2404-13-2-local/cuda-*-keyring.gpg /usr/share/keyrings/
 sudo apt-get update
 sudo apt-get -y install cuda-toolkit-13-2
-sudo apt install cuda
+# Run nvidia-smi. If it fails run following and then reboot
+sudo ubuntu-drivers autoinstall
+# Run nvidia-smi and nvcc --version. If the supported versions mismatch. Install nvidia-cuda-toolkit from apt
+sudo apt purge 'cuda-*'
+usdo apt autoremove
+sudo apt install nvidia-cuda-toolkit
+# Verify the versions again with nvidia-smi and nvcc --version
 ```
 
 Add this into .clangd file in your project where you want to use cuda
