@@ -179,3 +179,31 @@ rm -rf ~/.config/ghostty/config.ghostty
 ln -s ~/dotfiles/ghostty/config.ghostty ~/.config/ghostty/config.ghostty
 ```
 
+## Setting up cuda
+```bash
+update
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-ubuntu2404.pin
+sudo mv cuda-ubuntu2404.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget https://developer.download.nvidia.com/compute/cuda/13.2.1/local_installers/cuda-repo-ubuntu2404-13-2-local_13.2.1-595.58.03-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu2404-13-2-local_13.2.1-595.58.03-1_amd64.deb
+sudo cp /var/cuda-repo-ubuntu2404-13-2-local/cuda-*-keyring.gpg /usr/share/keyrings/
+sudo apt-get update
+sudo apt-get -y install cuda-toolkit-13-2
+sudo apt install cuda
+```
+
+Add this into .clangd file in your project where you want to use cuda
+```bash
+CompileFlags:
+  Add:
+    - -I/usr/loca/cuda/include
+    - -x
+    - cuda
+```
+
+For auto formatting c files put this in .clang-format file in your project
+```bash
+BasedOnStyle: LLVM
+IndentWidth: 4
+ColumnLimit: 100
+```
