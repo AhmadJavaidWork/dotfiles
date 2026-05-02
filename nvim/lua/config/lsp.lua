@@ -106,6 +106,13 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = { "*.c", "*.h" },
+	callback = function()
+		vim.lsp.buf.format()
+	end,
+})
+
 vim.keymap.set("n", "<C-space>", "v", { remap = true, desc = "Init selection" })
 vim.keymap.set("x", "<C-space>", "an", { remap = true, desc = "Increment selection" })
 vim.keymap.set("x", "<bs>", "in", { remap = true, desc = "Decrement selection" })
