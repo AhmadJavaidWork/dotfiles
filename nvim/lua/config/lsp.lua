@@ -23,8 +23,6 @@ vim.diagnostic.config({
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(ev)
-		local opts = { buffer = ev.buf, silent = true }
-
 		keymap.set("n", "K", function()
 			vim.lsp.buf.hover()
 		end, { desc = "LSP Hover Documentation" })
@@ -107,7 +105,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.c", "*.h" },
+	pattern = { "*.c", "*.h", "*.cu" },
 	callback = function()
 		vim.lsp.buf.format()
 	end,
