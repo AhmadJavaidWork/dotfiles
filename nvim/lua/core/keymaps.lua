@@ -78,3 +78,26 @@ end, { desc = "Git push current branch" })
 set_keymap("n", "<leader>gl", function()
 	run_git_and_show("git pull")
 end, { desc = "Git pull current branch" })
+
+local function create_file_in_context()
+	local bufname = vim.api.nvim_buf_get_name(0)
+
+	local base_dir
+
+	if bufname ~= "" then
+		base_dir = vim.fn.fnamemodify(bufname, ":p:h")
+	else
+		base_dir = vim.fn.getcwd()
+	end
+
+	local filename = vim.fn.input("Filename: ", base_dir .. "/")
+
+	if filename == "" then
+		print("Cancelled")
+		return
+	end
+
+	vim.cmd("edit " .. filename)
+end
+
+set_keymap("n", "<leader>nf", create_file_in_context, { desc = "New file in context" })
