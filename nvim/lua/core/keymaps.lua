@@ -97,6 +97,8 @@ local function create_file_in_context()
 		return
 	end
 
+	local dir = vim.fn.fnamemodify(filename, ":h")
+	vim.fn.mkdir(dir, "p")
 	vim.cmd("edit " .. filename)
 end
 
