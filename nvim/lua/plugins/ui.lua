@@ -22,7 +22,7 @@ return {
 					NormalFloat = { bg = "#252526" },
 					FloatBorder = { fg = "#858585" },
 
-					LspSignatureActiveParameter = { fg = "#252526", bold = true, underline = true },
+					LspSignatureActiveParameter = { fg = "#c586c0", bold = true, underline = true },
 
 					CursorColumn = { bg = "#2d2d2d" },
 					CursorLine = { bg = "#2d2d2d" },
