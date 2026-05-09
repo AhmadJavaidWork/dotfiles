@@ -76,7 +76,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		keymap.set(
 			"n",
-			"<leader>d",
+			"<leader>ld",
 			vim.diagnostic.open_float,
 			{ buffer = ev.buf, silent = true, desc = "Open current line diagnostic in float" }
 		)
