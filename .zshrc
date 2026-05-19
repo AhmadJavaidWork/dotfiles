@@ -23,6 +23,8 @@ alias prb="pnpm run build"
 alias c="code"
 
 alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
 
 export PATH="$PATH:/home/rv/IntelliJ/bin"
 export PATH="$PATH:/usr/local/go/bin"
