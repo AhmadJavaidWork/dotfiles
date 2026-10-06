@@ -28,10 +28,16 @@ alias v="nvim"
 
 export PATH="$PATH:/home/rv/IntelliJ/bin"
 export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:/usr/local/zig-x86_64-linux-0.16.0"
+export PATH="$PATH:/usr/local/zig-x86_64-linux-0.17.0"
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$PATH:/home/rv/go/bin"
 export PATH="$PATH:/usr/local/tree-sitter"
 export PATH="$PATH:/usr/local/cuda/bin"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64"
 
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/develop/flutter/bin:$PATH"
+export ANDROID_HOME=$HOME/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/build-tools/34.0.0

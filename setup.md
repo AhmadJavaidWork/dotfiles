@@ -55,8 +55,8 @@ tar -C /usr/local -xzf go1.26.2.linux-amd64.tar.gz
 
 ## Zig
 ```bash
-curl -LO https://ziglang.org/download/0.16.0/zig-x86_64-linux-0.16.0.tar.xz
-sudo tar -C /usr/local -xf zig-x86_64-linux-0.16.0.tar.xz
+curl -LO https://ziglang.org/download/0.17.0/zig-x86_64-linux-0.17.0.tar.xz
+sudo tar -C /usr/local -xf zig-x86_64-linux-0.17.0.tar.xz
 ```
 
 ## Bitwarden
