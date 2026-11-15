@@ -18,7 +18,7 @@ opt.wrap = false
 opt.hlsearch = true
 opt.incsearch = true
 
-opt.colorcolumn = "100"
+opt.colorcolumn = "80"
 
 opt.termguicolors = true
 
