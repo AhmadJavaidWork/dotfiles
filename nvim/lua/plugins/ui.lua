@@ -32,7 +32,7 @@ return {
 
 					["@lsp.type.component.vue"] = { fg = "#4ec9b0" },
 
-                    ["@keyword.coroutine.typescript"] = { fg = "#c586c0" },
+					["@keyword.coroutine.typescript"] = { fg = "#c586c0" },
 				},
 			})
 			vim.cmd.colorscheme("vscode")
