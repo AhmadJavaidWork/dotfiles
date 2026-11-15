@@ -28,7 +28,7 @@ alias v="nvim"
 
 export PATH="$PATH:/home/rv/IntelliJ/bin"
 export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:/usr/local/zig-x86_64-linux-0.16.0"
+export PATH="$PATH:/usr/local/zig-x86_64-linux-0.17.1"
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$PATH:/home/rv/go/bin"
 export PATH="$PATH:/usr/local/tree-sitter"
