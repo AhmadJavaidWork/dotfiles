@@ -5,6 +5,7 @@ return {
 	config = function()
 		local telescope = require("telescope")
 		local builtin = require("telescope.builtin")
+		local themes = require("telescope.themes")
 
 		telescope.setup({
 			defaults = {
@@ -15,17 +16,28 @@ return {
 					"target/",
 					"dist/",
 				},
-				get_status_text = function(self)
+				layout_strategy = "flex",
+				get_status_text = function()
 					return ""
 				end,
 			},
 		})
 
-		vim.keymap.set("n", "<leader>pf", builtin.find_files, { desc = "Telescope find files" })
-		vim.keymap.set("n", "<leader>pgi", builtin.live_grep, { desc = "Telescope live grep" })
-		vim.keymap.set("n", "<leader>pgu", function()
+		vim.keymap.set("n", "<leader>pf", function()
+			builtin.find_files(themes.get_dropdown({
+				no_ignore = true,
+				hidden = true,
+                previewer = false,
+			}))
+		end, { desc = "Telescope find files" })
+
+		vim.keymap.set("n", "<leader>lg", builtin.live_grep, { desc = "Telescope live grep" })
+		vim.keymap.set("n", "<leader>gs", builtin.grep_string, { desc = "Telescope grep string" })
+		vim.keymap.set("n", "<leader>tt", builtin.treesitter, { desc = "Telescope treesitter" })
+
+		vim.keymap.set("n", "<leader>lgu", function()
 			builtin.live_grep({
-				additional_args = function(opts)
+				additional_args = function()
 					return { "--unrestricted" }
 				end,
 				file_ignore_patterns = {
@@ -36,7 +48,29 @@ return {
 				},
 			})
 		end, { desc = "Live grep all files (including ignored)" })
-		vim.keymap.set("n", "<leader>ps", builtin.git_status, { desc = "Git status" })
+
+		vim.keymap.set("n", "<leader>ps", builtin.git_status, { desc = "Telescope git status" })
+
+		vim.keymap.set("n", "<leader>th", function()
+			builtin.colorscheme({
+				enable_preview = true,
+			})
+		end, { desc = "Telescope colorscheme" })
+
+		vim.keymap.set("n", "<leader>pb", function()
+			builtin.buffers({
+				sort_mru = true,
+			})
+		end, { desc = "Telescope open buffers" })
+
+		vim.keymap.set("n", "<leader>pc", function()
+			builtin.git_commits()
+		end, { desc = "Telescope commits" })
+
+		vim.keymap.set("n", "<leader>man", function()
+			builtin.man_pages({ sections = { "ALL" } })
+		end, { desc = "Telescope system man pages" })
+
 		vim.keymap.set("n", "<leader>pa", function()
 			builtin.find_files({
 				no_ignore = true,
@@ -48,13 +82,13 @@ return {
 					"dist/",
 				},
 			})
-		end, { desc = "All files" })
+		end, { desc = "Telescope find all files" })
 
 		vim.keymap.set(
 			"n",
 			"<leader>ds",
 			builtin.lsp_document_symbols,
-			{ desc = "Search document symbole in current buffer" }
+			{ desc = "Telescope search document symbol in current buffer" }
 		)
 	end,
 }
