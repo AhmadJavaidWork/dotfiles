@@ -38,7 +38,7 @@ return {
 					else
 						gs.nav_hunk("next")
 					end
-				end)
+				end, { desc = "Next hunk" })
 
 				map("n", "[c", function()
 					if vim.wo.diff then
@@ -46,7 +46,7 @@ return {
 					else
 						gs.nav_hunk("prev")
 					end
-				end)
+				end, { desc = "Previous hunk" })
 
 				map("n", "<leader>hs", gs.stage_hunk, { desc = "Stage/Unstage current hunk" })
 				map("n", "<leader>hS", gs.stage_buffer, { desc = "Stage current buffer" })
