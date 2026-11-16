@@ -27,7 +27,7 @@ sudo apt install -y python3-pip
 sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
 sudo apt install -y software-properties-common apt-transport-https git curl
 sudo apt install -y htop
-sudo apt install -y vlc nodejs npm
+sudo apt install -y vlc nodejs npm fd-find
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 nvm install v24.15.0
 nvm alias default v24.15.0

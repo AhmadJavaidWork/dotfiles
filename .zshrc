@@ -25,6 +25,7 @@ alias c="code"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
+alias fd="fdfind"
 
 export PATH="$PATH:/home/rv/IntelliJ/bin"
 export PATH="$PATH:/usr/local/go/bin"
