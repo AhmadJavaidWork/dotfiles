@@ -1,20 +1,6 @@
 return {
 	{
 		"mason-org/mason-lspconfig.nvim",
-		opts = {
-			ensure_installed = {
-				"lua_ls",
-				"ts_ls",
-				"vue_ls",
-				"tailwindcss",
-				"zls",
-				"gopls",
-				"html",
-				"cssls",
-				"pyright",
-				"clangd",
-			},
-		},
 		dependencies = {
 			{
 				"mason-org/mason.nvim",
@@ -30,6 +16,23 @@ return {
 			},
 			"neovim/nvim-lspconfig",
 		},
+		config = function()
+			local lspconfig = require("mason-lspconfig")
+			lspconfig.setup({
+				ensure_installed = {
+					"lua_ls",
+					"ts_ls",
+					"vue_ls",
+					"tailwindcss",
+					"zls",
+					"gopls",
+					"html",
+					"cssls",
+					"pyright",
+					"clangd",
+				},
+			})
+		end,
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
