@@ -2,7 +2,8 @@ return {
 	"stevearc/conform.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		require("conform").setup({
+		local conform = require("conform")
+		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				typescript = { "prettierd", "prettier", stop_after_first = true },
@@ -11,6 +12,8 @@ return {
 				json = { "prettierd", "prettier", stop_after_first = true },
 				zig = { "zigfmt" },
 				go = { "gofmt" },
+				c = { "clang_format" },
+				cpp = { "clang_format" },
 				["_"] = { "trim_whitespace" },
 			},
 
@@ -20,22 +23,24 @@ return {
 			},
 		})
 
-		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-			require("conform").format({
+		vim.keymap.set({ "n", "v" }, "<leader>fs", function()
+			conform.format({
 				lsp_fallback = true,
-				async = false,
 				timeout_ms = 500,
 			})
 		end, { desc = "Format file or range" })
+
+		vim.keymap.set("n", "<leader>lf", function()
+			local lines = { "Formatters for " .. vim.bo.filetype .. ":" }
+			for _, f in ipairs(conform.list_formatters_for_buffer()) do
+				local info = conform.get_formatter_info(f)
+				local line = (info.available and "[x] " or "[ ] ") .. f
+				if not info.available then
+					line = line .. "  (" .. info.available_msg .. ")"
+				end
+				table.insert(lines, line)
+			end
+			vim.notify(table.concat(lines, "\n"))
+		end, { desc = "List formatters for current buffer" })
 	end,
-	opts = {
-		formatters_by_ft = {
-			c = { "clang_format" },
-			cpp = { "clang_format" },
-		},
-		format_on_save = {
-			timeout_ms = 500,
-			lsp_fallback = true,
-		},
-	},
 }
