@@ -10,6 +10,9 @@ return {
 		telescope.setup({
 			defaults = {
 				layout_strategy = "flex",
+				get_status_text = function()
+					return ""
+				end,
 			},
 		})
 
