@@ -27,15 +27,15 @@ return {
 			builtin.find_files(themes.get_dropdown({
 				no_ignore = true,
 				hidden = true,
-                previewer = false,
+				previewer = false,
 			}))
 		end, { desc = "Telescope find files" })
 
-		vim.keymap.set("n", "<leader>lg", builtin.live_grep, { desc = "Telescope live grep" })
+		vim.keymap.set("n", "<leader>gi", builtin.live_grep, { desc = "Telescope live grep" })
 		vim.keymap.set("n", "<leader>gs", builtin.grep_string, { desc = "Telescope grep string" })
 		vim.keymap.set("n", "<leader>tt", builtin.treesitter, { desc = "Telescope treesitter" })
 
-		vim.keymap.set("n", "<leader>lgu", function()
+		vim.keymap.set("n", "<leader>gu", function()
 			builtin.live_grep({
 				additional_args = function()
 					return { "--unrestricted" }
@@ -51,7 +51,7 @@ return {
 
 		vim.keymap.set("n", "<leader>ps", builtin.git_status, { desc = "Telescope git status" })
 
-		vim.keymap.set("n", "<leader>th", function()
+		vim.keymap.set("n", "<leader>cs", function()
 			builtin.colorscheme({
 				enable_preview = true,
 			})
