@@ -54,6 +54,35 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			{ buffer = ev.buf, silent = true, desc = "Open available code action" }
 		)
 
+		set_keymap("n", "<leader>is", function()
+			local client = vim.lsp.get_clients({ bufnr = ev.buf, method = "textDocument/hover" })[1]
+			if not client then
+				return vim.notify("No LSP hover support", vim.log.levels.WARN)
+			end
+			local row = vim.api.nvim_win_get_cursor(0)[1]
+			local indent = vim.api.nvim_get_current_line():match("^%s*")
+			local params = vim.lsp.util.make_position_params(0, client.offset_encoding)
+			client:request("textDocument/hover", params, function(err, result)
+				if err or not result or not result.contents then
+					return vim.notify("No signature found", vim.log.levels.WARN)
+				end
+				local sig, in_block = {}, false
+				for _, line in ipairs(vim.lsp.util.convert_input_to_markdown_lines(result.contents)) do
+					if line:match("^```") then
+						if in_block then
+							break
+						end
+						in_block = true
+					elseif in_block then
+						table.insert(sig, indent .. line)
+					end
+				end
+				if #sig == 0 then
+					return vim.notify("No signature found", vim.log.levels.WARN)
+				end
+				vim.api.nvim_buf_set_lines(ev.buf, row - 1, row - 1, false, sig)
+			end, ev.buf)
+		end, { buffer = ev.buf, silent = true, desc = "Insert signature of symbol under cursor above line" })
 
 		set_keymap("n", "gD", vim.lsp.buf.declaration, { buffer = ev.buf, silent = true, desc = "Goto declaration" })
 
