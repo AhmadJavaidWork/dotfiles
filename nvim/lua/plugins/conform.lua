@@ -14,6 +14,7 @@ return {
 				go = { "gofmt" },
 				c = { "clang_format" },
 				cpp = { "clang_format" },
+				cuda = { "clang_format" },
 				["_"] = { "trim_whitespace" },
 			},
 
