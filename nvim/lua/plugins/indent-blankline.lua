@@ -3,7 +3,9 @@ return {
 	main = "ibl",
 	opts = {
 		exclude = {
-			buftypes = { "" },
+			filetypes = {
+				"dashboard",
+			},
 		},
 	},
 }
