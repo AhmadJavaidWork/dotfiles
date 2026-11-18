@@ -44,14 +44,4 @@ return {
 			hl(0, "DiffText", { bg = "#3a5f87" })
 		end,
 	},
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("lualine").setup({
-				theme = "vscode",
-				icons_enabled = true,
-			})
-		end,
-	},
 }
