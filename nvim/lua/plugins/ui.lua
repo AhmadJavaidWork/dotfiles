@@ -61,12 +61,4 @@ return {
 			vim.keymap.set("n", "<C-b>", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle Nvim tree" })
 		end,
 	},
-	{
-		"nvimdev/dashboard-nvim",
-		event = "VimEnter",
-		config = function()
-			require("dashboard").setup({})
-		end,
-		dependencies = { { "nvim-tree/nvim-web-devicons" } },
-	},
 }
