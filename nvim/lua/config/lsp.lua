@@ -1,4 +1,4 @@
-local keymap = vim.keymap
+local set_keymap = vim.keymap.set
 
 local severity = vim.diagnostic.severity
 
@@ -23,58 +23,59 @@ vim.diagnostic.config({
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(ev)
-		keymap.set("n", "K", function()
+		set_keymap("n", "K", function()
 			vim.lsp.buf.hover()
 		end, { desc = "LSP Hover Documentation" })
 
-		keymap.set({ "i", "n" }, "<C-k>", function()
+		set_keymap({ "i", "n" }, "<C-k>", function()
 			vim.lsp.buf.signature_help()
 		end, { buffer = ev.buf, silent = true, desc = "Open function signature help" })
 
-		keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf, silent = true, desc = "Goto definition" })
+		set_keymap("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf, silent = true, desc = "Goto definition" })
 
-		keymap.set(
+		set_keymap(
 			"n",
 			"gr",
 			vim.lsp.buf.references,
 			{ buffer = ev.buf, silent = true, desc = "Open references in current buffer" }
 		)
 
-		keymap.set(
+		set_keymap(
 			"n",
 			"<leader>rn",
 			vim.lsp.buf.rename,
 			{ buffer = ev.buf, silent = true, desc = "Rename a variable in scope" }
 		)
 
-		keymap.set(
+		set_keymap(
 			"n",
 			"<leader>ca",
 			vim.lsp.buf.code_action,
 			{ buffer = ev.buf, silent = true, desc = "Open available code action" }
 		)
 
-		keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = ev.buf, silent = true, desc = "Goto declaration" })
 
-		keymap.set(
+		set_keymap("n", "gD", vim.lsp.buf.declaration, { buffer = ev.buf, silent = true, desc = "Goto declaration" })
+
+		set_keymap(
 			"n",
 			"gi",
 			vim.lsp.buf.implementation,
 			{ buffer = ev.buf, silent = true, desc = "Open implementations" }
 		)
 
-		keymap.set(
+		set_keymap(
 			"n",
 			"gt",
 			vim.lsp.buf.type_definition,
 			{ buffer = ev.buf, silent = true, desc = "Goto type definition" }
 		)
 
-		keymap.set("n", "<leader>td", function()
+		set_keymap("n", "<leader>td", function()
 			vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 		end, { desc = "Toggle lsp diagnostics" })
 
-		keymap.set(
+		set_keymap(
 			"n",
 			"<leader>ld",
 			vim.diagnostic.open_float,
@@ -95,23 +96,16 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "lspinfo,markdown,help",
 	callback = function()
-		vim.keymap.set("n", "gd", function()
+		set_keymap("n", "gd", function()
 			vim.api.nvim_command("wincmd p")
 			vim.lsp.buf.definition()
 		end, { buffer = true, silent = true })
 
-		vim.keymap.set("n", "q", ":close<CR>", { buffer = true, silent = true })
+		set_keymap("n", "q", ":close<CR>", { buffer = true, silent = true })
 	end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.c", "*.h", "*.cu" },
-	callback = function()
-		vim.lsp.buf.format()
-	end,
-})
-
-vim.keymap.set("n", "<C-space>", "v", { remap = true, desc = "Init selection" })
-vim.keymap.set("x", "<C-space>", "an", { remap = true, desc = "Increment selection" })
-vim.keymap.set("x", "<bs>", "in", { remap = true, desc = "Decrement selection" })
+set_keymap("n", "<C-space>", "v", { remap = true, desc = "Init selection" })
+set_keymap("x", "<C-space>", "an", { remap = true, desc = "Increment selection" })
+set_keymap("x", "<bs>", "in", { remap = true, desc = "Decrement selection" })
 vim.treesitter.language.register("bash", "zsh")
