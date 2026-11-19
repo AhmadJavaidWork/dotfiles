@@ -9,3 +9,4 @@ keybind = ctrl+shift+p=unbind
 # Ensure Ctrl+Tab also passes through cleanly
 keybind = ctrl+tab=unbind
 keybind = ctrl+shift+tab=unbind
+maximize = true
