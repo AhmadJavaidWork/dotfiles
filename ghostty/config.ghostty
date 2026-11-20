@@ -10,3 +10,6 @@ keybind = ctrl+shift+p=unbind
 keybind = ctrl+tab=unbind
 keybind = ctrl+shift+tab=unbind
 maximize = true
+cursor-style = block
+cursor-style-blink = true
+shell-integration-features = no-cursor
